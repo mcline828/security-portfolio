@@ -4,7 +4,7 @@ Documented cloud security investigations, built in a live Azure tenant
 (Mad Hat Labs, a multi-user training environment).
 
 Target role: SOC Analyst / Security Analyst
-Currently: LEO - Cyber Crime | Asheville, NC
+
 Contact: mitchcline@gmail.com · [https://www.linkedin.com/in/mitch-cline/]
 
 ## Investigations
