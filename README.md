@@ -5,7 +5,7 @@ Documented cloud security investigations, built in a live Azure tenant
 
 Target role: SOC Analyst / Security Analyst
 
-Contact: mitchcline@gmail.com · [https://www.linkedin.com/in/mitch-cline/]
+Contact: mitchcline@gmail.com · https://www.linkedin.com/in/mitch-cline/
 
 ## Investigations
 | # | Title | Focus | Write-up |
