@@ -1,7 +1,7 @@
-# 🛡️ Operation Dead Deploy
+#  Operation Dead Deploy
 ### Investigating Unauthorized Resource Deployment in an Azure Subscription
 
-## 📋 Scenario
+##  Scenario
 
 An intern was temporarily granted Contributor access to deploy a test environment in Microsoft Azure. Unfamiliar with the organization's governance requirements, the intern deployed resources that violated established naming standards and left for the weekend without correcting the issues.
 
@@ -9,7 +9,7 @@ As the on-call engineer the following Monday, I investigated using **Reader (rea
 
 ---
 
-## 🖥️ Environment
+##  Environment
 
 | Category | Details |
 |---|---|
@@ -20,7 +20,7 @@ As the on-call engineer the following Monday, I investigated using **Reader (rea
 
 ---
 
-## 🔎 Investigation
+##  Investigation
 
 ### 1. Locating the Offending Deployment
 
@@ -46,7 +46,7 @@ I examined the resource group and its associated storage account, identifying se
 | Cost Center | `unspecified` | Made accurate cost allocation difficult |
 | Environment | `unknown` | Left the resource's purpose and operational impact unclear |
 
-The tags existed but contained values that provided little useful information. A policy checking only for tag presence could miss this issue. An unknown environment classification also makes it harder to assess the consequences of modifying or removing a resource.
+Knowing the owner confirmed that it was the intern. An unknown Cost Center tag makes proper cost attribution difficult. An unknown environment classification also makes it harder to assess the consequences of modifying or removing a resource.
 
 ![Azure resource tag review](images/DD2.png)
 
@@ -58,9 +58,8 @@ My review also identified the following settings:
 
 - **Minimum TLS version:** TLS 1.0, below the recommended minimum of TLS 1.2.
 - **Network access:** Default network action set to `Allow`, without virtual network or IP restrictions.
-- **Anonymous blob access:** Disabled, helping prevent unauthenticated access to blob data.
 
-Although anonymous blob access was disabled, the outdated TLS configuration and permissive network rules created unnecessary security exposure. Network reachability does not, by itself, mean data can be accessed without authorization.
+The outdated TLS configuration and permissive network rules created unnecessary security exposure. 
 
 ![Azure storage account configuration overview](images/DD2.1.png)
 
@@ -87,21 +86,21 @@ This explained why the naming violation was not prevented: the policy could flag
 
 ![Azure deployment completed successfully](images/DD3.1.png)
 
-*Figure 5: The Azure deployment overview confirms that the deployment completed successfully. The policy effect was established through the separate policy review.*
+*Figure 5: The Azure deployment overview confirms that the deployment completed successfully, regardless of the policy.*
 
 > **Key finding:** A policy's existence does not guarantee enforcement. Its effect and scope determine whether it identifies or prevents violations.
 
 ---
 
-## ⚠️ What Broke / What Surprised Me
+##  What Broke / What Surprised Me
 
-What surprised me most was the lack of noticeable alerts when noncompliant resources were deployed. Although this involved a test environment, similar oversights in production could create serious financial and security risks.
+What surprised me most was the lack of noticeable alerts when noncompliant resources were deployed. This testing incident and similar oversights in testing/production could create serious financial and security risks.
 
 Abandoned resources can generate unnecessary charges, especially when unclear tags make costs difficult to attribute. Insecure configurations can also expand the attack surface. Without regular monitoring, these issues could go unnoticed for an extended period.
 
 ---
 
-## 🛠️ Findings and Recommendations
+## Findings and Recommendations
 
 ### Quick Fixes
 
@@ -123,7 +122,7 @@ Because I investigated with Reader permissions, remediation would require approv
 
 ---
 
-## 📚 What I Learned
+##  What I Learned
 
 This investigation showed how small configuration mistakes and weak policy enforcement can create financial, operational, and security risks. Effective cloud governance requires multiple layers of protection, including naming standards, meaningful tags, access controls, security baselines, and monitoring.
 
