@@ -1,6 +1,6 @@
 # The Stolen Identity
 
-**Week 2 — Investigating an OAuth Consent-Phishing Attack in Microsoft Entra ID**
+## **Week 2 — Investigating an OAuth Consent-Phishing Attack in Microsoft Entra ID**
 
 ## Scenario
 
